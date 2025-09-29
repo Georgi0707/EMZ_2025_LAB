@@ -1,0 +1,47 @@
+12:58:20 **** Incremental Build of configuration Debug for project emre georgi ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_NUCLEO_64 -DUSE_HAL_DRIVER -DSTM32G474xx -c -I../Core/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc -I../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy -I../Drivers/BSP/STM32G4xx_Nucleo -I../Drivers/CMSIS/Device/ST/STM32G4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:116:11: error: 'ButtonState' undeclared (first use in this function); did you mean 'Button1State'?
+  116 |           ButtonState = 0;
+      |           ^~~~~~~~~~~
+      |           Button1State
+../Core/Src/main.c:116:11: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:117:28: error: 'Button1' undeclared (first use in this function)
+  117 |           HAL_GPIO_ReadPin(Button1, GPIO_Port, Button1_Pin);
+      |                            ^~~~~~~
+../Core/Src/main.c:117:37: error: 'GPIO_Port' undeclared (first use in this function)
+  117 |           HAL_GPIO_ReadPin(Button1, GPIO_Port, Button1_Pin);
+      |                                     ^~~~~~~~~
+../Core/Src/main.c:117:11: error: too many arguments to function 'HAL_GPIO_ReadPin'
+  117 |           HAL_GPIO_ReadPin(Button1, GPIO_Port, Button1_Pin);
+      |           ^~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32g4xx_hal_conf.h:216,
+                 from ../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h:298:19: note: declared here
+  298 | GPIO_PinState     HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+      |                   ^~~~~~~~~~~~~~~~
+../Core/Src/main.c:118:48: error: 'lastButtonState' undeclared (first use in this function); did you mean 'Button1State'?
+  118 |           if (ButtonState == GPIO_PIN_RESET && lastButtonState == GPUIO_PIN_SET)
+      |                                                ^~~~~~~~~~~~~~~
+      |                                                Button1State
+../Core/Src/main.c:118:67: error: 'GPUIO_PIN_SET' undeclared (first use in this function); did you mean 'GPIO_PIN_SET'?
+  118 |           if (ButtonState == GPIO_PIN_RESET && lastButtonState == GPUIO_PIN_SET)
+      |                                                                   ^~~~~~~~~~~~~
+      |                                                                   GPIO_PIN_SET
+../Core/Src/main.c:120:19: error: 'lampState' undeclared (first use in this function)
+  120 |                   lampState = !LampState;
+      |                   ^~~~~~~~~
+../Core/Src/main.c:120:32: error: 'LampState' undeclared (first use in this function)
+  120 |                   lampState = !LampState;
+      |                                ^~~~~~~~~
+../Core/Src/main.c:111:17: warning: unused variable 'Button1State' [-Wunused-variable]
+  111 |   GPIO_PinState Button1State=0;
+      |                 ^~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:34: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+
+12:58:21 Build Failed. 9 errors, 1 warnings. (took 754ms)
+
